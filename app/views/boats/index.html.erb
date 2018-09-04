@@ -1,0 +1,23 @@
+<h1>Boats! Boats! Boats!</h1>
+<div>
+  <h3>Filter boats:</h3>
+  <%= form_tag("/boats", method: "get") do %>
+  <%= select_tag "classification", options_from_collection_for_select(@classifications, "id", "name"), include_blank: true %>
+
+    <%=submit_tag "Filter" %>
+
+    <%end%>
+  </div>
+
+
+<% @boats.each do |boat| %>
+  <div>
+    <h2><%= boat.name %></h2>
+    <h3>Captain: <%= link_to boat.captain, boat.captain%></h3>
+    <p><%boat.classifications.each do |classification| %>
+      <%=classification.name%>,
+        <%end%>
+      </p>
+    <p>Length: <%= boat.length %></p>
+  </div>
+<% end %>

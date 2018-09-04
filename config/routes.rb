@@ -1,4 +1,12 @@
 ArelLab::Application.routes.draw do
+
+  get 'test/index'
+  resources :captains, only: [:show]
+  resources :boats, only: [:index, :show, :new, :create, :edit, :update]
+
+  root 'boatss#index'
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +61,4 @@ ArelLab::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

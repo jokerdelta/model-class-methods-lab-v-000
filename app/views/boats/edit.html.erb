@@ -1,0 +1,15 @@
+<%= form_for(@boat) do |f| %>
+  <label>Boat name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Boat Captain</label><br>
+  <%= f.text_field :captain %><br>
+
+  <label>Boat Length</label><br>
+  <%= f.text_field :length %><br>
+
+  <label>Boat Classification</label><br>
+  <%= f.text_field :classification %><br>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Name: <%= @boat.name %></h1>
+<p>Captain: <%= @boat.captain.name %></p>
+<p>Length: <%= @boat.length %></p>
+<p>Classifications: <% @boat.classifications.each do |classification| %>
+  <%=classification.name%>,
+  <%end%>
+</p>
+
