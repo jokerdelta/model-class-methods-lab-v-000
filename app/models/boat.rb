@@ -3,20 +3,25 @@ class Boat < ActiveRecord::Base
   has_many    :boat_classifications
   has_many    :classifications, through: :boat_classifications
 
+
   def self.first_five
-    @boats = Boat.first(5)
-  end
+    # Boat.where(table[:id].lteq(5).to_sql)
+    Boat.limit(5)
+   end
 
   def self.dinghy
     #return boats shorter than 20'
+    Boat.where(table[:length].lteq(19).to_sql)
   end
 
   def self.ship
     #return boats 20' or longer
+    Boat.where(table[:length].gteq(20).to_sql)
   end
 
   def self.last_three_alphabetically
     #returns last three boats in alphabetical order
+    Boat.last(3).asc
   end
 
   def self.without_a_captain
@@ -30,5 +35,12 @@ class Boat < ActiveRecord::Base
   def self.with_three_classifications
     #returns boats with three classifications
   end
+
+  private
+
+  def self.table
+    Boat.arel_table
+  end
+
 
 end
